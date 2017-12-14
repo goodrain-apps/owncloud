@@ -57,8 +57,7 @@ RUN curl -fsSL -o owncloud.tar.bz2 \
 	&& gpg --batch --verify owncloud.tar.bz2.asc owncloud.tar.bz2 \
 	&& rm -r "$GNUPGHOME" owncloud.tar.bz2.asc \
 	&& tar -xjf owncloud.tar.bz2  \
-	&& cd owncloud \
-	&& mv * .. \
+	&& mv owncloud/* . \
 	&& rm owncloud.tar.bz2
 
 COPY 10.0/apache/docker-entrypoint.sh /usr/local/bin/
