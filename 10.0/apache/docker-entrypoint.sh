@@ -3,6 +3,7 @@
 [ $DEBUG ] && set -x
 chown -R www-data /data
 
-sleep ${PAUSE:-0}
+ln -s /data /var/www/html/data
 
+sleep ${PAUSE:-0}
 exec "$@"
