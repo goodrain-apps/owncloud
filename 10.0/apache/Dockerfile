@@ -58,6 +58,6 @@ RUN curl -fsSL -o owncloud.tar.bz2 \
 	&& tar -xjf owncloud.tar.bz2 -C /usr/src/ \
 	&& rm owncloud.tar.bz2
 
-COPY docker-entrypoint.sh /usr/local/bin/
+COPY 10.0/apache/docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
