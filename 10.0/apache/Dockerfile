@@ -44,7 +44,7 @@ RUN set -ex \
 	&& docker-php-ext-enable apcu memcached redis
 
 ENV OWNCLOUD_VERSION 10.0.4
-VOLUME /var/www/html
+VOLUME ["/var/www/html/apps","/var/www/html/data","var/www/html/config"]
 
 RUN curl -fsSL -o owncloud.tar.bz2 \
 		"https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2" \
