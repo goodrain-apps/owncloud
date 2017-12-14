@@ -3,7 +3,7 @@
 [ $DEBUG ] && set -x
 chown -R www-data /data
 
-if [ ! -d /data ];then
+if [ ! -d /data/data ];then
     mv /var/www/html/data /data
 else 
     mv /var/www/html/data /var/www/html/data.bak 
