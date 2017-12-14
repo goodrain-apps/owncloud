@@ -44,7 +44,7 @@ RUN set -ex \
 	&& docker-php-ext-enable apcu memcached redis
 
 ENV OWNCLOUD_VERSION 10.0.4
-VOLUME ["/var/www/html/apps","/var/www/html/data","/var/www/html/config"]
+VOLUME /data
 
 RUN curl -fsSL -o owncloud.tar.bz2 \
 		"https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2" \
@@ -55,7 +55,7 @@ RUN curl -fsSL -o owncloud.tar.bz2 \
 	&& gpg --keyserver ha.pool.sks-keyservers.net --recv-keys E3036906AD9F30807351FAC32D5D5E97F6978A26 \
 	&& gpg --batch --verify owncloud.tar.bz2.asc owncloud.tar.bz2 \
 	&& rm -r "$GNUPGHOME" owncloud.tar.bz2.asc \
-	&& tar -xjf owncloud.tar.bz2 -C /usr/src/ \
+	&& tar -xjf owncloud.tar.bz2  \
 	&& rm owncloud.tar.bz2
 
 COPY 10.0/apache/docker-entrypoint.sh /usr/local/bin/
