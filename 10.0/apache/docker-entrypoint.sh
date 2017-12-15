@@ -3,7 +3,7 @@
 [[ $DEBUG ]] && set -x
 
 DEFAULT_PERSISTENT_DIR="/data"
-APP_PERSISTENT_DIR="data app config"
+APP_PERSISTENT_DIR="data apps config"
 
 for dir in $APP_PERSISTENT_DIR
 do
