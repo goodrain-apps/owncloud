@@ -17,7 +17,7 @@ do
     else 
         [ -d /var/www/html/${dir} ] && mv /var/www/html/${dir} /var/www/html/${dir}.bak 
     fi
-    ln -s /${DEFAULT_PERSISTENT_DIR}/${dir} /var/www/html/${dir}
+    ln -s ${DEFAULT_PERSISTENT_DIR}/${dir} /var/www/html/${dir}
 done
 
 sleep ${PAUSE:-0}
