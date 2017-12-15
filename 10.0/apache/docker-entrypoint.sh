@@ -10,7 +10,7 @@ do
     if [ ! -d ${DEFAULT_PERSISTENT_DIR}/${dir} ];then
     
         [ -d /var/www/html/${dir} ] \
-        && mv /var/www/html/${dir} ${DEFAULT_PERSISTENT_DIR} \
+        && rm -rf /var/www/html/${dir} \
         || mkdir ${DEFAULT_PERSISTENT_DIR}/${dir}
 
         chown www-data.www-data ${DEFAULT_PERSISTENT_DIR}/${dir} -R
