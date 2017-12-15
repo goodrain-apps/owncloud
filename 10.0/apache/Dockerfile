@@ -60,6 +60,9 @@ RUN curl -fsSL -o owncloud.tar.bz2 \
 	&& mv owncloud/* . \
 	&& rm owncloud.tar.bz2
 
+# Timezone
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 COPY 10.0/apache/docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
