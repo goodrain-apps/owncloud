@@ -1,15 +1,19 @@
 #!/bin/bash
 
-[ $DEBUG ] && set -x
-chown -R www-data /data
+[[ $DEBUG ]] && set -x
 
-if [ ! -d /data/data ];then
-    mv /var/www/html/data /data
-else 
-    mv /var/www/html/data /var/www/html/data.bak 
-fi 
+DEFAULT_PERSISTENT_DIR="/data"
+APP_PERSISTENT_DIR="data app config"
 
-ln -s /data/data /var/www/html/data
+for dir in $APP_PERSISTENT_DIR
+do
+    if [ ! -d /${DEFAULT_PERSISTENT_DIR}/${dir} ];then
+        mv /var/www/html/${dir} ${DEFAULT_PERSISTENT_DIR}
+    else 
+        mv /var/www/html/${dir} /var/www/html/${dir}.bak 
+    fi
+    ln -s /${DEFAULT_PERSISTENT_DIR}/${dir} /var/www/html/${dir}
+done
 
 sleep ${PAUSE:-0}
 exec "$@"
